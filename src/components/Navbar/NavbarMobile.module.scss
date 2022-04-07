@@ -1,0 +1,73 @@
+@import '../../_variables.scss';
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE
+
+.navMobileContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3vmin 4vmin;
+
+  .hamburgerContainer {
+    position: fixed;
+    z-index: 2;
+
+    img {
+      width: calc(0.4rem + 3vmin);
+      height: calc(0.4rem + 3vmin);
+      cursor: pointer;
+    }
+  }
+}
+
+.mobileMenuContainer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+}
+
+.darken {
+  width: 40%;
+  background-color: rgba(12, 16, 24, 0.4);
+}
+
+.mobileLinksContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  background-color: rgba(32, 44, 66, 0.97);
+
+  figure {
+    display: flex;
+    align-items: flex-end;
+    width: 90%;
+    height: 10%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .mobileLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+    gap: 6vmin;
+  }
+
+  .link {
+    font-size: 1.13em;
+    font-weight: 300;
+    color: $text;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+  }
+}
