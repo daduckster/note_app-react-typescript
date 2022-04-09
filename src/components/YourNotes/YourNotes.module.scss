@@ -1,1 +1,88 @@
 @import '../../_variables.scss';
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE
+
+.yourNotesContainer {
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(4rem + 3vmin);
+
+  .yourNotesHeader {
+    margin-bottom: 1vmin;
+    padding-left: 4vmin;
+    color: $text;
+
+    h2 {
+      font-size: calc(0.7rem + 3.2vmin);
+      font-weight: 600;
+    }
+  }
+}
+
+.notesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8vmin;
+  width: 100%;
+  padding: 8vmin 4vmin;
+  background-color: $field;
+
+  .searchbar {
+    padding: 2vmin 3vmin;
+    border: none;
+    border-radius: 3px;
+    background-color: $input;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    color: $text;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 4vmin;
+  padding: 4vmin;
+  border-radius: 3px;
+  background-color: $note-background;
+  color: $text;
+
+  .firstLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .titleText {
+      font-size: calc(0.5rem + 3.2vmin);
+      font-weight: 600;
+      color: $title;
+      overflow-wrap: break-word;
+    }
+
+    .deleteBtn {
+      margin-left: 1rem;
+      border: none;
+      background: none;
+      font-size: 1em;
+      color: $text;
+      cursor: pointer;
+    }
+  }
+
+  .noteText {
+    font-size: calc(0.9rem + 0.5vmin);
+    overflow-wrap: break-word;
+  }
+
+  .tagText {
+    font-size: calc(0.9rem + 0.5vmin);
+    color: $tag;
+    text-align: end;
+    overflow-wrap: break-word;
+  }
+}

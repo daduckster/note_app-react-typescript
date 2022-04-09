@@ -3,9 +3,9 @@ import styles from './Footer.module.scss'
 
 function Footer() {
   return (
-    <div>
-      Footer
-    </div>
+    <footer className={styles.footerContainer}>
+      <p>© 2022 by Olya Vlasak - olyavlasak@gmail.com</p>
+    </footer>
   );
 }
 

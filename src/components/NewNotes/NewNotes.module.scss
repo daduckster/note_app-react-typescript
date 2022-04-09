@@ -1,0 +1,97 @@
+@import '../../_variables.scss';
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE
+.newNotesContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: calc(4rem + 3vmin);
+}
+
+.newNotesHeader {
+  display: none;
+}
+
+.newNotesForm {
+  display: flex;
+  flex-direction: column;
+  gap: 4vmin;
+  width: 100%;
+  padding: 8vmin 4vmin;
+  background-color: $field;
+
+  .label{
+    font-size: calc(0.5rem + 3.2vmin);
+    font-weight: 300;
+    color: $text;
+  }
+
+  .textInput {
+    display: block;
+    width: 100%;
+    margin-top: 2vmin;
+    padding: 2vmin 3vmin;
+    border: none;
+    border-radius: 3px;
+    background-color: $input;
+    font-size: calc(0.9rem + 0.5vmin);
+    font-family: 'Poppins', sans-serif;
+    color: $text;
+
+    &:focus {
+      outline: none;
+    }
+
+
+  }
+
+  .textarea {
+    display: block;
+    width: 100%;
+    height: fit-content;
+    min-height: 40vmin;
+    margin-top: 2vmin;
+    padding: 2vmin 3vmin;
+    border: none;
+    background-color: $input;
+    font-size: calc(0.9rem + 0.5vmin);
+    font-family: 'Poppins', sans-serif;
+    color: $text;
+    resize: vertical;
+
+    &:focus {
+      outline: none;
+    }
+
+  }
+
+  .submitBtn{
+    margin-top: 8vmin;
+    padding: 2vmin 4vmin;
+    border: none;
+    border-radius: 3px;
+    background: linear-gradient($gradient);
+    font-size: calc(1rem + 1vmin);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: $input;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(0.97);
+    }
+  }
+
+
+}
+
+.lastLineContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.animationSvg {
+  display: none;
+}
