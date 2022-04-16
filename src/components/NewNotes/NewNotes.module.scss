@@ -57,7 +57,7 @@
     font-size: calc(0.9rem + 0.5vmin);
     font-family: 'Poppins', sans-serif;
     color: $text;
-    resize: vertical;
+    resize: none;
 
     &:focus {
       outline: none;
@@ -82,7 +82,7 @@
     cursor: pointer;
 
     &:hover {
-      transform: scale(0.97);
+      transform: scale(1.03);
     }
   }
 }
@@ -142,13 +142,13 @@
     .label{
       font-size: calc(0.3rem + 2vmin);
       font-weight: 300;
-      color: $white-text;
+      color: $text;
     }
 
     .textInput {
+      z-index: 1;
       margin-top: 1vmin;
       padding: 1vmin 2vmin;
-      z-index: 1;
     }
 
     .textarea {
@@ -168,21 +168,80 @@
     }
 
     .submitBtn{
+      z-index: 1;
       width: fit-content;
       margin-top: 0;
       padding: 1vmin 3vmin;
       font-size: calc(0.3rem + 2vmin);
       font-weight: 700;
-      z-index: 1;
     }
   }
 
   .animationSvg {
-    position: absolute;
-    top: calc(4rem + 33vmin);
-    left: 24vmin;
     z-index: 0;
+    position: absolute;
+    top: calc(6rem + 32vmin);
+    left: 24vmin;
     display: flex;
+    width: 72vmin;
+    height: auto;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// DESKTOP + IPAD PRO HORIZONTAL
+@media screen and (min-height: 568px) and (min-width: 1366px) {
+  .newNotesContainer {
+    height: 86vh;
+
+    .newNotesHeader {
+      h1 {
+        font-size: calc(1rem + 6vmin);
+      }
+    }
+  }
+
+  .newNotesForm {
+    width: 65vmin;
+
+    .label{
+      font-size: calc(0.3rem + 2vmin);
+    }
+
+    .textInput {
+      margin-top: 0.6vmin;
+    }
+
+    .textarea {
+      z-index: 2;
+      min-height: 18vmin;
+      margin-top: 0.6vmin;
+      resize: vertical;
+    }
+  }
+
+  .lastLineContainer {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 4vmin;
+
+    .tagInput {
+      width: 100%;
+    }
+
+    .submitBtn{
+      height: fit-content;
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  .animationSvg {
+    z-index: -1;
+    top: calc(4rem + 23vmin);
+    left: 42vmin;
     width: 72vmin;
     height: auto;
   }

@@ -69,6 +69,11 @@
     text-decoration: none;
     text-align: center;
     cursor: pointer;
+
+    &:hover {
+      border-bottom: 1px solid $text;
+      transform: scale(1.05);
+    }
   }
 }
 

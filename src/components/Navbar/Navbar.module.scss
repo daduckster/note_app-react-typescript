@@ -40,7 +40,34 @@
       text-decoration: none;
       text-align: center;
       cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px solid $text;
+        transform: scale(1.05);
+      }
     }
   }
+}
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// DESKTOP + IPAD PRO HORIZONTAL
+@media screen and (min-height: 568px) and (min-width: 1366px) {
+  .navContainer {
+    width: 134vmin;
+    margin: auto;
+  }
+
+  .logo {
+    width: 17em;
+  }
+
+  .linkContainer {
+    .link {
+      border-bottom: 1px solid transparent;
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+  }
 }

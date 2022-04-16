@@ -23,10 +23,14 @@ body {
   background:  url("../public/assets/images/Background-03.jpg")  repeat  fixed ;
   background-size: cover;
   overflow-x: clip;
-  //background-size: 100vw;
 
   @media screen and (min-height: 568px) and (min-width: 613px) {
-    background:  url("../public/assets/images/Background-02.jpg")  repeat  fixed ;
+    background:  url("../public/assets/images/Background-02.jpg") repeat  fixed ;
+    background-size: cover;
+  }
+
+  @media screen and (min-height: 568px) and (min-width: 1366px) {
+    background:  url("../public/assets/images/Background-01.jpg")  repeat  fixed ;
     background-size: cover;
   }
 
@@ -36,3 +40,17 @@ body {
   display: none !important;
 }
 
+.deleted {
+  animation: myAnimDelete 1s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnimDelete {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+}

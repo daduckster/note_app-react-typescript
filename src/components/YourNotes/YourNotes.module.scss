@@ -73,22 +73,31 @@
         font-size: calc(0.5rem + 3.2vmin);
         color: $text;
         cursor: pointer;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
     }
   }
 
   .noteText {
-    font-size: calc(0.9rem + 0.5vmin);
+    font-size: 1em;
     overflow-wrap: break-word;
     font-weight: 200;
   }
 
   .tagText {
-    font-size: calc(0.9rem + 0.5vmin);
+    font-size: 1em;
     color: $tag;
     text-align: end;
     overflow-wrap: break-word;
   }
+}
+
+input,
+input::-webkit-input-placeholder {
+  font-size: calc(0.9rem + 0.5vmin);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,23 +107,27 @@
     padding-top: calc(4rem + 3vmin);
 
     .yourNotesHeader {
+      z-index: 1;
       margin-bottom: 1vmin;
       padding-left: 3vmin;
 
       h2 {
         font-size: calc(1rem + 1.7vmin);
         font-weight: 300;
-        color: $white-text;
+        color: $text;
       }
     }
   }
 
   .notesContainer {
+    z-index: 0;
     gap: 3vmin;
     min-height: 30vmin;
     padding: 4vmin 3vmin;
+    box-shadow: 0 0 50px 5px $box-shadow;
 
     .searchbar {
+      width: 45%;
       padding: 1vmin 2vmin;
       font-size: 1em;
     }
@@ -126,13 +139,55 @@
 
     .firstLine {
       .titleText {
-        font-size: calc(0.3rem + 2.3vmin);
+        font-size: calc(0.3rem + 2vmin);
       }
 
       .btnContainer {
         .noteIcon {
           margin-left: 1rem;
-          font-size: calc(0.3rem + 2.3vmin);
+          font-size: calc(0.3rem + 2vmin);
+        }
+      }
+    }
+
+    .noteText {
+      font-size: calc(0.9rem + 0.4vmin);
+    }
+
+    .tagText {
+      font-size: calc(0.9rem + 0.4vmin);
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// DESKTOP + IPAD PRO HORIZONTAL
+@media screen and (min-height: 568px) and (min-width: 1366px) {
+  .yourNotesContainer {
+    width: 134vmin;
+  }
+
+  .notesContainer {
+    border-radius: 3px;
+
+    .searchbar {
+      width: 35%;
+    }
+  }
+
+  .note {
+    .firstLine {
+      .titleText {
+        font-size: calc(0.8rem + 1vmin);
+      }
+
+      .btnContainer {
+        .noteIcon {
+          font-size: calc(0.3rem + 1.5vmin);
+
+          &:active {
+            transform: scale(0.96);
+          }
         }
       }
     }
