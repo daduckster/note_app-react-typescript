@@ -6,8 +6,8 @@ function Navbar() {
   return (
     <nav className={styles.navContainer}>
       <NavbarMobile />
-      <div className={`hidden ${styles.desktopLinks}`}>
-        <figure>
+      <div className={`${styles.desktopLinks}`}>
+        <figure className={styles.logo}>
           <img src={"assets/images/Logo.svg"} alt="logo note forget"/>
         </figure>
         <div className={styles.linkContainer}>

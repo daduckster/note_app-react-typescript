@@ -11,7 +11,16 @@
 
   p {
     font-size: 0.87em;
+    font-weight: 200;
     color: $text;
     text-align: center;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// TABLET
+@media screen and (min-height: 568px) and (min-width: 613px) {
+  .footerContainer {
+    padding-top: calc(1rem + 2vmin);
   }
 }

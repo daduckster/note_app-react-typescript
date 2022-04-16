@@ -43,8 +43,6 @@
     &:focus {
       outline: none;
     }
-
-
   }
 
   .textarea {
@@ -64,8 +62,12 @@
     &:focus {
       outline: none;
     }
-
   }
+}
+
+.lastLineContainer {
+  display: flex;
+  flex-direction: column;
 
   .submitBtn{
     margin-top: 8vmin;
@@ -83,15 +85,105 @@
       transform: scale(0.97);
     }
   }
-
-
-}
-
-.lastLineContainer {
-  display: flex;
-  flex-direction: column;
 }
 
 .animationSvg {
   display: none;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE - HORIZONTAL
+@media screen and (max-height: 567px) {
+  .newNotesContainer {
+    padding-top: 0;
+  }
+
+  .newNotesHeader {
+    display: flex;
+    background: -webkit-linear-gradient($text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 11vmin;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// TABLET
+@media screen and (min-height: 568px) and (min-width: 613px) {
+  .newNotesContainer {
+    justify-content: center;
+    height: 83vh;
+    padding-top: 0;
+    border-radius: 3px;
+
+    .newNotesHeader {
+      display: flex;
+      background: -webkit-linear-gradient($text-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      white-space: nowrap;
+
+      h1 {
+        font-size: calc(1rem + 6.5vmin);
+      }
+    }
+  }
+
+  .newNotesForm {
+    position: relative;
+    width: 70vmin;
+    gap: 2vmin;
+    padding: 4vmin 3vmin;
+    box-shadow: 0 0 50px 5px $box-shadow;
+
+    .label{
+      font-size: calc(0.3rem + 2vmin);
+      font-weight: 300;
+      color: $white-text;
+    }
+
+    .textInput {
+      margin-top: 1vmin;
+      padding: 1vmin 2vmin;
+      z-index: 1;
+    }
+
+    .textarea {
+      min-height: 20vmin;
+      margin-top: 1vmin;
+      padding: 1vmin 2vmin;
+    }
+  }
+
+  .lastLineContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 3vmin;
+
+    .tagInput {
+      width: 76%;
+    }
+
+    .submitBtn{
+      width: fit-content;
+      margin-top: 0;
+      padding: 1vmin 3vmin;
+      font-size: calc(0.3rem + 2vmin);
+      font-weight: 700;
+      z-index: 1;
+    }
+  }
+
+  .animationSvg {
+    position: absolute;
+    top: calc(4rem + 33vmin);
+    left: 24vmin;
+    z-index: 0;
+    display: flex;
+    width: 72vmin;
+    height: auto;
+  }
 }

@@ -5,3 +5,42 @@
 .navContainer {
   width: 100vw;
 }
+
+.desktopLinks {
+  display: none;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// TABLET
+@media screen and (min-height: 568px) and (min-width: 613px) {
+  .desktopLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5vmin 3vmin 0 3vmin;
+  }
+
+  .logo {
+    width: 32vmin;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .linkContainer {
+    display: flex;
+    gap: 3vmin;
+
+    .link {
+      font-size: 1em;
+      font-weight: 300;
+      color: $text;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
+
+}

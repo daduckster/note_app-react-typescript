@@ -15,7 +15,7 @@
 
     h2 {
       font-size: calc(0.7rem + 3.2vmin);
-      font-weight: 600;
+      font-weight: 300;
     }
   }
 }
@@ -49,6 +49,7 @@
   gap: 4vmin;
   padding: 4vmin;
   border-radius: 3px;
+  box-shadow: 0 0 50px 5px $note-shadow;
   background-color: $note-background;
   color: $text;
 
@@ -59,24 +60,27 @@
 
     .titleText {
       font-size: calc(0.5rem + 3.2vmin);
-      font-weight: 600;
+      font-weight: 300;
       color: $title;
       overflow-wrap: break-word;
     }
 
-    .deleteBtn {
-      margin-left: 1rem;
-      border: none;
-      background: none;
-      font-size: 1em;
-      color: $text;
-      cursor: pointer;
+    .btnContainer {
+      .noteIcon {
+        margin-left: 0.7rem;
+        border: none;
+        background: none;
+        font-size: calc(0.5rem + 3.2vmin);
+        color: $text;
+        cursor: pointer;
+      }
     }
   }
 
   .noteText {
     font-size: calc(0.9rem + 0.5vmin);
     overflow-wrap: break-word;
+    font-weight: 200;
   }
 
   .tagText {
@@ -84,5 +88,53 @@
     color: $tag;
     text-align: end;
     overflow-wrap: break-word;
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// TABLET
+@media screen and (min-height: 568px) and (min-width: 613px) {
+  .yourNotesContainer {
+    padding-top: calc(4rem + 3vmin);
+
+    .yourNotesHeader {
+      margin-bottom: 1vmin;
+      padding-left: 3vmin;
+
+      h2 {
+        font-size: calc(1rem + 1.7vmin);
+        font-weight: 300;
+        color: $white-text;
+      }
+    }
+  }
+
+  .notesContainer {
+    gap: 3vmin;
+    min-height: 30vmin;
+    padding: 4vmin 3vmin;
+
+    .searchbar {
+      padding: 1vmin 2vmin;
+      font-size: 1em;
+    }
+  }
+
+  .note {
+    gap: 2vmin;
+    padding: 3vmin;
+
+    .firstLine {
+      .titleText {
+        font-size: calc(0.3rem + 2.3vmin);
+      }
+
+      .btnContainer {
+        .noteIcon {
+          margin-left: 1rem;
+          font-size: calc(0.3rem + 2.3vmin);
+        }
+      }
+    }
   }
 }

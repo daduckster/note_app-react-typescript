@@ -1,5 +1,5 @@
 @import './_variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;700&display=swap');
 
 *,
 *::before,
@@ -7,6 +7,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
 }
 
 body {
@@ -18,7 +22,13 @@ body {
   font-family: 'Poppins', sans-serif;
   background:  url("../public/assets/images/Background-03.jpg")  repeat  fixed ;
   background-size: cover;
+  overflow-x: clip;
   //background-size: 100vw;
+
+  @media screen and (min-height: 568px) and (min-width: 613px) {
+    background:  url("../public/assets/images/Background-02.jpg")  repeat  fixed ;
+    background-size: cover;
+  }
 
 }
 

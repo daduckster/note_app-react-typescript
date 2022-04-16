@@ -22,14 +22,14 @@ function NewNotes() {
         <div>
           <label className={styles.label} htmlFor="note-tag">Tag (optional):</label>
           <div className={styles.lastLineContainer}>
-            <input className={styles.textInput} type="text" id={'note-tag'}/>
+            <input className={`${styles.textInput} ${styles.tagInput}`} type="text" id={'note-tag'}/>
             <input className={styles.submitBtn} type="submit" value={"CREATE NOTE"}/>
           </div>
         </div>
-      </form>
 
-      <object className={styles.animationSvg} aria-label="Animation of a solar system with a can instead of sun" type="image/svg+xml"
-              data={"assets/animations/Animated.svg"}/>
+        <object className={styles.animationSvg} aria-label="Animation of a solar system with a can instead of sun" type="image/svg+xml"
+                data={"assets/animations/Animated.svg"}/>
+      </form>
     </section>
   );
 }
