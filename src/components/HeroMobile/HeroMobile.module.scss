@@ -27,8 +27,9 @@
   gap: 4vmin;
 
   .newNoteBtn {
-    padding: calc(0.2rem + 1vmin) calc(1rem + 2.5vmin);
+    padding: calc(0.5rem + 1vmin) calc(1rem + 2.5vmin);
     border-radius: 3px;
+    border: none;
     background: linear-gradient($gradient);
     font-size: 6vmin;
     font-weight: 700;

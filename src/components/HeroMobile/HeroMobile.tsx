@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './HeroMobile.module.scss'
+import {smoothScroll} from "../Navbar/navHelper";
 
 function HeroMobile() {
   return (
@@ -9,8 +10,8 @@ function HeroMobile() {
       </header>
 
       <div className={styles.btnContainer}>
-        <a href={"#"} className={styles.newNoteBtn}>CREATE NEW NOTE</a>
-        <a href={"#"} className={styles.yourNotesBtn}>YOUR NOTES</a>
+        <button type={'button'} className={styles.newNoteBtn}>CREATE NEW NOTE</button>
+        <a href={"#yourNotes"} onClick={(e) => smoothScroll(e)} className={styles.yourNotesBtn}>YOUR NOTES</a>
       </div>
 
       <figure className={styles.croppedImgContainer}>
