@@ -4,6 +4,7 @@ import {FiEdit3} from "react-icons/fi";
 import {AiOutlineDelete} from "react-icons/ai";
 import { NewNote} from "../../types/Notes";
 
+
 interface PropTypes {
   note:NewNote
   notes: NewNote[]

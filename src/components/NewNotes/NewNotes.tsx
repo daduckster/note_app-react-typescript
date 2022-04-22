@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './NewNotes.module.scss'
 import {defaultNote, InputEvent, NewNote, SubmitEvent} from '../../types/Notes'
-import {createNote, scrollToNote, scrollToYourNotesContainer} from "./newNotesHelper";
+import {createNote, replaceNote, scrollToNote, scrollToYourNotesContainer} from "./newNotesHelper";
 
 interface PropTypes {
   addNote: (newNote:NewNote) => void
@@ -35,10 +35,7 @@ function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEdit
     } else {
       const noteToReplace = notes.find(note => note.id === inputData.id)
       if (!noteToReplace) return;
-      noteToReplace.titleInput = inputData.titleInput
-      noteToReplace.noteInput = inputData.noteInput
-      noteToReplace.tagInput = inputData.tagInput
-      noteToReplace.id = inputData.id
+      replaceNote(noteToReplace, inputData)
       localStorage.setItem('notes', JSON.stringify(notes));
       setInputData({...defaultNote})
       stopEditing()
@@ -58,20 +55,20 @@ function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEdit
       <form className={styles.newNotesForm} onSubmit={handleSubmit}>
         <div>
           <label className={styles.label} htmlFor="note-title">Title (optional):</label>
-          <input className={styles.textInput} type="text" id={'note-title'} name={'titleInput'}
+          <input className={styles.textInput} type="text" autoComplete={'off'} id={'note-title'} name={'titleInput'}
                   value={inputData.titleInput} onChange={(e) => handleChange(e)}/>
         </div>
 
         <div>
           <label className={styles.label} htmlFor="note-text">Type your note:</label>
-          <textarea className={styles.textarea} id={'note-text'} name={'noteInput'} value={inputData.noteInput}
+          <textarea className={styles.textarea} autoComplete={'off'} id={'note-text'} name={'noteInput'} value={inputData.noteInput}
                     onChange={(e)=>handleChange(e)} required={true}/>
         </div>
 
         <div>
           <label className={styles.label} htmlFor="note-tag">Tag (optional):</label>
           <div className={styles.lastLineContainer}>
-            <input className={`${styles.textInput} ${styles.tagInput}`} type="text" id={'note-tag'} name={'tagInput'}
+            <input className={`${styles.textInput} ${styles.tagInput}`} type="text" autoComplete={'off'} id={'note-tag'} name={'tagInput'}
                     value={inputData.tagInput} onChange={(e)=>handleChange(e)}/>
             {isEditing
             ? <input className={styles.submitBtn} type="submit" value={"SAVE CHANGES"}/>

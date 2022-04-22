@@ -1,5 +1,6 @@
 
 import {updateLocalStorage} from "../../api/storageHandler";
+import {NewNote} from "../../types/Notes";
 
 interface InputData {
   titleInput: string
@@ -18,6 +19,13 @@ export function createNote(inputData:InputData){
   updateLocalStorage(newNote);
 
   return newNote;
+}
+
+export function replaceNote(noteToReplace:NewNote, inputData:NewNote) {
+  noteToReplace.titleInput = inputData.titleInput
+  noteToReplace.noteInput = inputData.noteInput
+  noteToReplace.tagInput = inputData.tagInput
+  noteToReplace.id = inputData.id
 }
 
 export function scrollToYourNotesContainer() {

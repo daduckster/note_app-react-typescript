@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Note from "./Note";
 import styles from './YourNotes.module.scss'
 import {InputEvent, NewNote} from "../../types/Notes";
+import {filterNotes} from "./yourNotesHelper";
 
 interface PropTypes {
   notes: NewNote[]
@@ -27,16 +28,18 @@ function YourNotes({notes, removeNote, addNoteToEdit}:PropTypes) {
 
   function handleSearch(e:InputEvent) {
     e.preventDefault()
-
     const value = e.target.value
+    const filteredNotes = filterNotes(notes, value)
+    changeFittingNotes(filteredNotes)
+  }
 
-    const filteredNotes = notes.filter(note =>
-      note.titleInput.toLowerCase().includes(value.toLowerCase()) ||
-      note.noteInput.toLowerCase().includes(value.toLowerCase()) ||
-      note.tagInput.toLowerCase().includes(value.toLowerCase())
-    )
-
+  function changeFittingNotes(filteredNotes:NewNote[]) {
     setFittingNotes(filteredNotes)
+  }
+
+  function showAllNotes() {
+    setShowBtn(false)
+    setSearchInputData('')
   }
 
   return (
@@ -47,21 +50,22 @@ function YourNotes({notes, removeNote, addNoteToEdit}:PropTypes) {
 
       <div className={styles.notesContainer}>
         <div className={styles.searchContainer}>
-          <input className={styles.searchbar} type="text" value={searchInputData} aria-label={'search by keyword'} placeholder={'Search by' +
-            ' Keyword'} onChange={(e)=> {
+          <input id={'searchbar'} className={styles.searchbar} type="search" autoComplete={'off'} value={searchInputData}
+                  aria-label={'search by keyword'} placeholder={'Search by Keyword'}
+                  onChange={(e)=> {
             handleChange(e);
             handleSearch(e)
           } }/>
 
           {showBtn && (
-            <button type={'button'} className={styles.showAllBtn}>Show All</button>
+            <button type={'button'} className={styles.showAllBtn} onClick={showAllNotes}>Show All</button>
           )}
 
         </div>
 
         {fittingNotes && showBtn
-          ?  fittingNotes.map(note => <Note key={note.id} note={note} notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit} />)
-          : notes.map(note => <Note key={note.id} note={note} notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit} />)}
+          ? fittingNotes.map(note => <Note key={note.id} note={note} notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit}/>)
+          : notes.map(note => <Note key={note.id} note={note} notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit}/>)}
       </div>
 
     </section>

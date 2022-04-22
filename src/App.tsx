@@ -46,7 +46,7 @@ function App() {
       <Navbar />
       <HeroMobile />
       <NewNotes addNote={addNote} noteToEdit={noteToEdit} isEditing={isEditing} notes={notes} populateList={populateList} stopEditing={stopEditing}/>
-      <YourNotes notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit}/>
+      <YourNotes notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit} />
       <Footer />
     </div>
   );
