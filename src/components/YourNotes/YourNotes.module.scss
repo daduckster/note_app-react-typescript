@@ -3,6 +3,23 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 // MOBILE
 
+.deleted {
+  animation: myAnimDelete 1s ease 0s 1 normal forwards;
+}
+
+
+@keyframes myAnimDelete {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+}
+
+
 .yourNotesContainer {
   display: flex;
   flex-direction: column;
@@ -27,6 +44,12 @@
   width: 100%;
   padding: 8vmin 4vmin;
   background-color: $field;
+}
+
+.searchContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .searchbar {
     padding: 2vmin 3vmin;
@@ -41,6 +64,21 @@
       outline: none;
     }
   }
+
+  .showAllBtn {
+    height: fit-content;
+    border: none;
+    border-bottom: 1px solid $text;
+    background: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: $text;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 }
 
 .note {
@@ -52,6 +90,7 @@
   box-shadow: 0 0 50px 5px $note-shadow;
   background-color: $note-background;
   color: $text;
+  scroll-margin: 30vmin;
 
   .firstLine {
     display: flex;
@@ -125,11 +164,17 @@ input::-webkit-input-placeholder {
     min-height: 30vmin;
     padding: 4vmin 3vmin;
     box-shadow: 0 0 50px 5px $box-shadow;
+  }
 
+  .searchContainer {
     .searchbar {
       width: 45%;
       padding: 1vmin 2vmin;
       font-size: 1em;
+    }
+
+    .showAllBtn {
+      font-size: calc(0.3rem + 2vmin);
     }
   }
 
@@ -169,9 +214,18 @@ input::-webkit-input-placeholder {
 
   .notesContainer {
     border-radius: 3px;
+  }
 
+  .searchContainer {
     .searchbar {
       width: 35%;
+    }
+
+    .showAllBtn {
+      font-size: 1em;
+      &:active {
+        transform: scale(0.97);
+      }
     }
   }
 

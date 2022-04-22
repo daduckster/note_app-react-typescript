@@ -4,13 +4,34 @@ import HeroMobile from "./components/HeroMobile/HeroMobile";
 import YourNotes from "./components/YourNotes/YourNotes";
 import Footer from "./components/Footer/Footer";
 import NewNotes from "./components/NewNotes/NewNotes";
-import {NewNote} from "./types/Notes";
+import {defaultNote, NewNote} from "./types/Notes";
+import {scrollToNewNotesContainer} from "./components/YourNotes/yourNotesHelper";
 
 function App() {
   const [notes, setNotes] = useState<NewNote[]>([])
+  const [noteToEdit,setNoteToEdit] = useState<NewNote>({...defaultNote})
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+
+  useEffect(() => {
+    populateList()
+  },[])
 
   function addNote(newNote:NewNote) {
     setNotes([newNote, ...notes])
+  }
+
+  function removeNote(filteredNotes:NewNote[]) {
+    setNotes(filteredNotes)
+  }
+
+  function addNoteToEdit(note:NewNote) {
+    setNoteToEdit({...note})
+    setIsEditing(true)
+    scrollToNewNotesContainer()
+  }
+
+  function stopEditing() {
+    setIsEditing(false)
   }
 
   function populateList(){
@@ -20,15 +41,12 @@ function App() {
     setNotes([...notesInStorage])
   }
 
-  useEffect(() => {
-    populateList()
-  },[])
   return (
     <div>
       <Navbar />
       <HeroMobile />
-      <NewNotes addNote={addNote} />
-      <YourNotes notes={notes}/>
+      <NewNotes addNote={addNote} noteToEdit={noteToEdit} isEditing={isEditing} notes={notes} populateList={populateList} stopEditing={stopEditing}/>
+      <YourNotes notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit}/>
       <Footer />
     </div>
   );

@@ -1,14 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './NewNotes.module.scss'
-import {InputEvent, NewNote, SubmitEvent} from '../../types/Notes'
-import {createNote} from "./newNotesHelper";
+import {defaultNote, InputEvent, NewNote, SubmitEvent} from '../../types/Notes'
+import {createNote, scrollToNote, scrollToYourNotesContainer} from "./newNotesHelper";
 
 interface PropTypes {
   addNote: (newNote:NewNote) => void
+  noteToEdit: NewNote
+  isEditing: boolean
+  notes: NewNote[]
+  populateList: () => void
+  stopEditing: () => void
 }
 
-function NewNotes({addNote}:PropTypes) {
-  const [inputData, setInputData] = useState({titleInput: '', noteInput: '', tagInput: ''})
+function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEditing}:PropTypes) {
+  const [inputData, setInputData] = useState<NewNote>({...defaultNote})
+
+  useEffect(() => {
+    setInputData({...noteToEdit})
+  }, [noteToEdit])
 
   function handleChange(e:InputEvent) {
     const {name, value} = e.target;
@@ -17,9 +26,27 @@ function NewNotes({addNote}:PropTypes) {
 
   function handleSubmit(e:SubmitEvent){
     e.preventDefault();
-    const newNote = createNote(inputData);
-    setInputData({titleInput: '', noteInput: '', tagInput: ''})
-    addNote(newNote)
+
+    if (!isEditing) {
+      const newNote = createNote(inputData);
+      setInputData({...defaultNote})
+      addNote(newNote)
+      scrollToYourNotesContainer()
+    } else {
+      const noteToReplace = notes.find(note => note.id === inputData.id)
+      if (!noteToReplace) return;
+      noteToReplace.titleInput = inputData.titleInput
+      noteToReplace.noteInput = inputData.noteInput
+      noteToReplace.tagInput = inputData.tagInput
+      noteToReplace.id = inputData.id
+      localStorage.setItem('notes', JSON.stringify(notes));
+      setInputData({...defaultNote})
+      stopEditing()
+      populateList()
+      scrollToNote(noteToReplace.id)
+    }
+
+
   }
 
   return (
@@ -31,23 +58,30 @@ function NewNotes({addNote}:PropTypes) {
       <form className={styles.newNotesForm} onSubmit={handleSubmit}>
         <div>
           <label className={styles.label} htmlFor="note-title">Title (optional):</label>
-          <input className={styles.textInput} type="text" id={'note-title'} name={'titleInput'} value={inputData.titleInput} onChange={handleChange}/>
+          <input className={styles.textInput} type="text" id={'note-title'} name={'titleInput'}
+                  value={inputData.titleInput} onChange={(e) => handleChange(e)}/>
         </div>
 
         <div>
           <label className={styles.label} htmlFor="note-text">Type your note:</label>
-          <textarea className={styles.textarea} id={'note-text'} name={'noteInput'} value={inputData.noteInput} onChange={handleChange} required={true}/>
+          <textarea className={styles.textarea} id={'note-text'} name={'noteInput'} value={inputData.noteInput}
+                    onChange={(e)=>handleChange(e)} required={true}/>
         </div>
 
         <div>
           <label className={styles.label} htmlFor="note-tag">Tag (optional):</label>
           <div className={styles.lastLineContainer}>
-            <input className={`${styles.textInput} ${styles.tagInput}`} type="text" id={'note-tag'} name={'tagInput'} value={inputData.tagInput} onChange={handleChange}/>
-            <input className={styles.submitBtn} type="submit" value={"CREATE NOTE"}/>
+            <input className={`${styles.textInput} ${styles.tagInput}`} type="text" id={'note-tag'} name={'tagInput'}
+                    value={inputData.tagInput} onChange={(e)=>handleChange(e)}/>
+            {isEditing
+            ? <input className={styles.submitBtn} type="submit" value={"SAVE CHANGES"}/>
+            : <input className={styles.submitBtn} type="submit" value={"CREATE NOTE"}/>
+            }
+
           </div>
         </div>
 
-        <object className={styles.animationSvg} aria-label="Animation of a solar system with a can instead of sun" type="image/svg+xml"
+        <object className={`hidden ${styles.animationSvg}`} aria-label="Animation of a solar system with a can instead of sun" type="image/svg+xml"
                 data={"assets/animations/Animated.svg"}/>
       </form>
     </section>
