@@ -11,6 +11,7 @@ function App() {
   const [notes, setNotes] = useState<NewNote[]>([])
   const [noteToEdit,setNoteToEdit] = useState<NewNote>({...defaultNote})
   const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [showBtn, setShowBtn] = useState<boolean>(false)
 
   useEffect(() => {
     populateList()
@@ -41,12 +42,16 @@ function App() {
     setNotes([...notesInStorage])
   }
 
+  function toggleShowBtn(boolean: boolean) {
+    setShowBtn(boolean)
+  }
+
   return (
     <div>
       <Navbar />
       <HeroMobile />
-      <NewNotes addNote={addNote} noteToEdit={noteToEdit} isEditing={isEditing} notes={notes} populateList={populateList} stopEditing={stopEditing}/>
-      <YourNotes notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit} />
+      <NewNotes addNote={addNote} noteToEdit={noteToEdit} isEditing={isEditing} notes={notes} populateList={populateList} stopEditing={stopEditing} toggleShowBtn={toggleShowBtn}/>
+      <YourNotes notes={notes} removeNote={removeNote} addNoteToEdit={addNoteToEdit} toggleShowBtn={toggleShowBtn} showBtn={showBtn}/>
       <Footer />
     </div>
   );

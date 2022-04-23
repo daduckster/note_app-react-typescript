@@ -140,6 +140,26 @@ input::-webkit-input-placeholder {
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE - HORIZONTAL
+@media screen and (max-height: 567px) {
+  .yourNotesContainer{
+    .yourNotesHeader{
+      padding-left: 10vmin;
+    }
+  }
+
+  .notesContainer {
+    padding: 8vmin 10vmin;
+  }
+
+  .searchContainer {
+    .searchbar{
+      width: 45%;
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // TABLET
 @media screen and (min-height: 568px) and (min-width: 613px) {
   .yourNotesContainer {

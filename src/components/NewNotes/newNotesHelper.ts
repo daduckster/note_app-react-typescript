@@ -37,7 +37,9 @@ export function scrollToYourNotesContainer() {
 export function scrollToNote(id:string) {
   const desiredNote = document.getElementById(`${id}`)
   if (!desiredNote) return
-  desiredNote.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+  setTimeout(() => {
+    desiredNote.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' })
+  },5)
 }
 
 function createID() {

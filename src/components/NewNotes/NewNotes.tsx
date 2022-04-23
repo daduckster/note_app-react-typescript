@@ -10,9 +10,10 @@ interface PropTypes {
   notes: NewNote[]
   populateList: () => void
   stopEditing: () => void
+  toggleShowBtn: (boolean:boolean) => void
 }
 
-function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEditing}:PropTypes) {
+function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEditing, toggleShowBtn}:PropTypes) {
   const [inputData, setInputData] = useState<NewNote>({...defaultNote})
 
   useEffect(() => {
@@ -28,11 +29,13 @@ function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEdit
     e.preventDefault();
 
     if (!isEditing) {
+      toggleShowBtn(false)
       const newNote = createNote(inputData);
       setInputData({...defaultNote})
       addNote(newNote)
       scrollToYourNotesContainer()
     } else {
+      toggleShowBtn(false)
       const noteToReplace = notes.find(note => note.id === inputData.id)
       if (!noteToReplace) return;
       replaceNote(noteToReplace, inputData)
@@ -78,7 +81,7 @@ function NewNotes({addNote, noteToEdit, isEditing, notes, populateList, stopEdit
           </div>
         </div>
 
-        <object className={`hidden ${styles.animationSvg}`} aria-label="Animation of a solar system with a can instead of sun" type="image/svg+xml"
+        <object className={styles.animationSvg} aria-label="Animation of a solar system with a can instead of sun" type="image/svg+xml"
                 data={"assets/animations/Animated.svg"}/>
       </form>
     </section>

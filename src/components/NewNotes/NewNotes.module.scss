@@ -84,6 +84,10 @@
     &:hover {
       transform: scale(1.03);
     }
+
+    &:focus {
+      outline:none;
+    }
   }
 }
 
@@ -106,6 +110,10 @@
     font-size: 11vmin;
     font-weight: 700;
     white-space: nowrap;
+  }
+
+  .newNotesForm{
+    width:80vw;
   }
 }
 

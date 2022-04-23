@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Note from "./Note";
 import styles from './YourNotes.module.scss'
 import {InputEvent, NewNote} from "../../types/Notes";
@@ -8,21 +8,30 @@ interface PropTypes {
   notes: NewNote[]
   removeNote: (filteredNotes:NewNote[]) => void
   addNoteToEdit: (note:NewNote) => void
+  toggleShowBtn: (boolean:boolean) => void
+  showBtn:boolean
 }
 
-function YourNotes({notes, removeNote, addNoteToEdit}:PropTypes) {
+function YourNotes({notes, removeNote, addNoteToEdit, toggleShowBtn, showBtn}:PropTypes) {
   const [searchInputData, setSearchInputData] = useState<string>('')
-  const [showBtn, setShowBtn] = useState<boolean>(false)
   const [fittingNotes, setFittingNotes] = useState<NewNote[]>([])
+
+  useEffect(()=>{if(!showBtn) {setSearchInputData('')}}, [showBtn])
+  useEffect(()=>{
+    if(searchInputData !== '') {
+      const filteredNotes = filterNotes(notes, searchInputData)
+      changeFittingNotes(filteredNotes)
+    }
+  }, [notes, searchInputData])
 
   function handleChange(e:InputEvent) {
     const value = e.target.value;
     setSearchInputData(value)
 
     if (value) {
-      setShowBtn(true)
+      toggleShowBtn(true)
     } else {
-      setShowBtn(false)
+      toggleShowBtn(false)
     }
   }
 
@@ -38,7 +47,7 @@ function YourNotes({notes, removeNote, addNoteToEdit}:PropTypes) {
   }
 
   function showAllNotes() {
-    setShowBtn(false)
+    toggleShowBtn(false)
     setSearchInputData('')
   }
 

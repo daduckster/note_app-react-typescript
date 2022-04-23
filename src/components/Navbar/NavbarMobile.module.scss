@@ -78,6 +78,22 @@
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+// MOBILE - HORIZONTAL
+@media screen and (max-height: 567px) {
+  .darken {
+    width: 60%
+  }
+
+  .mobileLinksContainer{
+    width: 40%;
+
+    figure{
+      width: 70%;
+    }
+  }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // TABLET
 @media screen and (min-height: 568px) and (min-width: 613px) {
   .navMobileContainer {
